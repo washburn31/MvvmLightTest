@@ -1,0 +1,38 @@
+﻿<Window x:Class="MvvmLightTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MvvmLightTest"
+        xmlns:Views="clr-namespace:MvvmLightTest.Views"
+        mc:Ignorable="d"
+        Title="Weather Informer" Height="496.053" Width="1300" DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+    <!--<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="640"></ColumnDefinition>
+            <ColumnDefinition Width="640"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card Padding="32" Margin="16" Grid.Column="0">
+        <Views:EmployeeInfoView  Grid.Column="0"/>
+        </materialDesign:Card>
+        <materialDesign:Card Padding="32" Margin="16" Grid.Column="1">
+            <Views:SaveEmployeeView  Grid.Column="1"/>
+        </materialDesign:Card>
+    </Grid>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="0" x:Name="mainFrame" Source="/MvvmLightTest;component/Views/RssPage.xaml" />
+        <Button Grid.Row="1" Content="Go to test page" Click="Button_Click" />
+    </Grid>
+</Window>

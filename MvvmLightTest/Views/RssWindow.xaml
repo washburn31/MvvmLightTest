@@ -1,0 +1,42 @@
+﻿<Window x:Class="MvvmLightTest.Views.RssWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:MvvmLightTest.Views"
+        xmlns:uc="clr-namespace:MvvmLightTest.Views.UserControls"        
+        mc:Ignorable="d"
+        Title="RssWindow" Height="450" Width="800"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Rss}">
+    <Grid Background="{DynamicResource MaterialDesignBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" />
+        <StackPanel Grid.Row="1">
+            <uc:UCTest SetText="Hello world" />
+            <ListView ItemsSource="{Binding Path=News}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=PublishDate}" />
+                            <TextBlock Text="{Binding Path=Title}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <DockPanel Grid.Row="2">
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem>
+                    <Button Command="{Binding Path=LoadCommand}">
+                        <materialDesign:PackIcon Kind="Reload" Height="24" Width="24" />
+                    </Button>
+                </StatusBarItem>
+            </StatusBar>
+        </DockPanel>
+    </Grid>
+</Window>
